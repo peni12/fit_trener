@@ -394,7 +394,7 @@ class FirstWindowActivity(Screen):
 class FirstWindowProfile(Screen):
     pass
 #Window.size = (720, 1280)
-Window.size = (360, 720)
+Window.size = (360, 620)
 
 class StackLayoutExample(StackLayout):
     pass

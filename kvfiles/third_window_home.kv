@@ -1,47 +1,84 @@
-
 <ThirdWindowHome>:
     name:'third_home'
     id: third_window_home
-    FloatLayout:
-        orientation: 'vertical'
-        MDIconButton:
-            name: 'Back'
-            text: 'Back'
-            icon: 'chevron-left'
-            pos:"10dp", "550dp"
-            on_release:
-                print(app.root.ids.first_main_window.ids.home_screen_manager.current)
-                app.root.current = 'first_main_window'
-                app.root.ids.first_main_window.ids.home_screen_manager.current = 'first_home'
-                print('root.parent: ', root.parent)
-
-                root.manager.transition.direction = 'left'
     BoxLayout:
-        padding: 10
-#        ImageButton:
-        Button:
-            background_color: 0, 0, 0, 0
-            size_hint: 0.5, 1
-            text: 'Start'
-            color: 0, 0, 0, 1
-            canvas.before:
-                Color:
-                    rgba: 0.96, 0.68, 0.13, 1
-                RoundedRectangle:
-                    radius: [15,]
-                    size: self.size
-                    pos: self.pos
-            font_size: 25
-            bold: True
-            pos_hint: {'x':0, 'y':0}
-            id: but
-#            source:'image/start.png'
+        orientation: 'vertical'
+        BoxLayout:
+            size_hint: 1, 2
+            orientation: 'vertical'
+            ScrollView:
+                do_scroll_y: True
+                BoxLayout:
+                    size_hint: 1, 1.2
+                    orientation: 'vertical'
+                    BoxLayout:
+                        FloatLayout:
+                            MDIconButton:
+                                name: 'Back'
+                                text: 'Back'
+                                icon: 'chevron-left'
+                                pos_hint: {'x': 0, 'y': 0.9}
+                                on_release:
+                                    print(app.root.ids.first_main_window.ids.home_screen_manager.current)
+                                    app.root.current = 'first_main_window'
+                                    app.root.ids.first_main_window.ids.home_screen_manager.current = 'first_home'
+                                    print('root.parent: ', root.parent)
 
-            size_hint: 0.2, 0.1
-            mipmap: True
-#            pos_hint: {'center_x': .5, 'center_y': .5}
-            on_press:
-                app.root.current = 'fourth_home'
-                app.root.ids.fourth_window_home.ids.videoo.state = 'play'
-                app.root.ids.fourth_window_home.build()
-                app.root.ids.fourth_window_home.pris()
+                                    root.manager.transition.direction = 'left'
+                            Video:
+                                pos_hint: {'x': 0, 'y': 0}
+                                source: 'Video/1.mov'
+                    BoxLayout:
+                        padding: 10
+                        orientation: 'vertical'
+                        BoxLayout:
+                            Label:
+                                text_size: self.size
+                                halign: 'left'
+                                font_size: 25
+                                text: 'Jump High'
+                                bold: True
+                        Label:
+                            text_size: self.size
+                            font_size: 20
+                            text: 'Beginner - 5 min'
+                        BoxLayout:
+                            Image:
+                                size_hint: 0.6, 1
+                                source: 'Image/1.png'
+                            Label:
+                                text_size: self.size
+                                text: "Single-line item with avatar"
+                        Label:
+                            text_size: self.size
+                            text: 'qwerty ui oghn mcvb nhj kld fgh ol;g bn bnm ghjm'
+
+        BoxLayout:
+            size_hint: 1, 0.4
+            padding: 50, 30, 50, 30
+        #        ImageButton:
+            Button:
+                background_color: 0, 0, 0, 0
+                text: 'Start'
+                color: 0, 0, 0, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.96, 0.68, 0.13, 1
+                    RoundedRectangle:
+                        radius: [15,]
+                        size: self.size
+                        pos: self.pos
+                font_size: 25
+                bold: True
+                pos_hint: {'x':0, 'y':0}
+                id: but
+        #            source:'image/start.png'
+
+                size_hint: 0.5, 0.7
+                mipmap: True
+        #            pos_hint: {'center_x': .5, 'center_y': .5}
+                on_press:
+                    app.root.current = 'fourth_home'
+                    app.root.ids.fourth_window_home.ids.videoo.state = 'play'
+                    app.root.ids.fourth_window_home.build()
+                    app.root.ids.fourth_window_home.pris()
