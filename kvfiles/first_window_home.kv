@@ -1,0 +1,397 @@
+<FirstWindowHome>:
+    name: 'first_home'
+    ScrollView:
+
+        do_scroll_x:False
+        do_scroll_y:True
+        bar_width: 0
+        size: (Window.width, Window.height)
+
+        BoxLayout:
+            size_hint: 1, 1.4
+            orientation: 'vertical'
+            height:self.minimum_height
+            FloatLayout:
+                size_hint: 1, 0.25
+                MDIconButton:
+                    size_hint: (0.15, 0.1)
+                    pos_hint: {"x":.85, "y":-0.4}
+                    name: 'filter'
+                    text: 'filter'
+                    icon: 'filter'
+            Label:
+                size_hint: 1, 0.6
+                markup: True
+                text: "[b]Categories[/b]"
+                bold: True
+                font_size: 25
+                pos_hint: {"x":-0.3, "y":.45}
+
+            ScrollView:
+                do_scroll_x:True
+                do_scroll_y: False
+                size_hint: 1, 1
+                bar_width: 0
+                BoxLayout:
+                    size_hint: 3, 1
+                    rows:1
+                    col_default_width: root.width * 2
+                    padding:10
+                    spacing:10
+
+                    ImageButton:
+                        source:'image/2.png'
+                        mipmap: True
+                        canvas.before:
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [30]
+                        on_release:
+
+                            root.parent.current = 'second_home'
+
+                            root.manager.transition.direction = 'left'
+
+                    ImageButton:
+                        source:'image/1.png'
+                        canvas.before:
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [28]
+                        mipmap: True
+                    ImageButton:
+                        source:'image/5.png'
+                        canvas.before:
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [28]
+                        mipmap: True
+                    ImageButton:
+                        source:'image/2.png'
+                        canvas.before:
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [28]
+                        mipmap: True
+                    ImageButton:
+                        source:'image/1.png'
+                        canvas.before:
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [28]
+                        mipmap: True
+                    ImageButton:
+                        source:'image/1.png'
+                        canvas.before:
+                            RoundedRectangle:
+                                size: self.size
+                                pos: self.pos
+                                radius: [28]
+                        mipmap: True
+            Label:
+                size_hint: 1, 0.6
+                markup: True
+                text: "[b]Custom Workout[/b]"
+                bold: True
+                font_size: 25
+                pos_hint: {"x":-0.2, "y":.45}
+            BoxLayout:
+                padding: 15
+
+                orientation: 'vertical'
+                BoxLayout:
+                    orientation: 'vertical'
+                    canvas:
+                        Color:
+                            rgba: 0.7, 0, 0, 0.5
+                        RoundedRectangle:
+                            radius: [15,]
+                            size: self.size
+                            pos: self.pos
+                    FloatLayout:
+
+                        Label:
+                            pos_hint: {"x":-0.32, "y":-0.22}
+                            markup: True
+                            text: '[b]Create new[/b]'
+                            font_size: 20
+                            halign: 'left'
+                        MDIconButton:
+                            size_hint: (0.1, 0.08)
+                            pos_hint: {"x":0.85, "y":-0.13}
+                            name: 'filter'
+                            text: 'filter'
+                            icon: 'filter'
+                    BoxLayout:
+                        Label:
+                            markup: True
+                            text: '[b]Generate a workout based on your preferences \nand previous performance[/b]'
+            Label:
+                size_hint: 1, 0.6
+                markup: True
+                text: "[b]Workout Types[/b]"
+                bold: True
+                font_size: 25
+                pos_hint: {"x":-0.2, "y":.45}
+            ScrollView:
+                do_scroll_x:True
+                do_scroll_y: False
+                size_hint: 1, 2
+                bar_width: 0
+                BoxLayout:
+                    size_hint: 3.4, 1
+                    padding: 20
+                    spacing: 20
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        MDCard:
+                            orientation: "vertical"
+                            ripple_behavior: True
+                            size: "100dp", "110dp"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+                            canvas:
+                                Color:
+                                    rgba: 0.169, 0.169, 0.169, 1
+                                RoundedRectangle:
+                                    radius: [15,]
+                                    size: self.size
+                                    pos: self.pos
+                            on_release:
+
+                                root.parent.current = 'second_home'
+
+                                root.manager.transition.direction = 'left'
+                            MDBoxLayout:
+                                id: box_top
+                                adaptive_height: True
+                                size_hint: 1, 1
+
+                                Image:
+                                    source: "image/2.png"
+
+                                    height: text_box.height
+
+                            MDBoxLayout:
+                                id: text_box
+                                orientation: "vertical"
+                                adaptive_height: True
+                                padding: 0, "10dp", "10dp", "10dp"
+
+                                MDLabel:
+
+                                    text: "Do The Body Good"
+                                    theme_text_color: "Primary"
+                                    bold: True
+                                    adaptive_height: True
+
+                                MDLabel:
+                                    text: "Beginner · 30 sec"
+                                    adaptive_height: True
+                                    theme_text_color: "Primary"
+
+                                MDSeparator:
+                                OneLineAvatarListItem:
+                                    text: "Single-line item with avatar"
+
+                                    ImageLeftWidget:
+                                        background_color: 1, 1, 1, 1
+                                        source: "Image/1.png"
+
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        MDCard:
+                            orientation: "vertical"
+                            ripple_behavior: True
+                            size: "100dp", "110dp"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+                            canvas:
+                                Color:
+                                    rgba: 0.169, 0.169, 0.169, 1
+                                RoundedRectangle:
+                                    radius: [15,]
+                                    size: self.size
+                                    pos: self.pos
+                            on_release:
+
+                                root.parent.current = 'second_home'
+
+                                root.manager.transition.direction = 'left'
+                            MDBoxLayout:
+                                id: box_top
+                                adaptive_height: True
+                                size_hint: 1, 1
+
+                                Image:
+                                    source: "image/2.png"
+
+                                    height: text_box.height
+
+                            MDBoxLayout:
+                                id: text_box
+                                orientation: "vertical"
+                                adaptive_height: True
+                                padding: 0, "10dp", "10dp", "10dp"
+
+                                MDLabel:
+
+                                    text: "Do The Body Good"
+                                    theme_text_color: "Primary"
+                                    bold: True
+                                    adaptive_height: True
+
+                                MDLabel:
+                                    text: "Beginner · 30 sec"
+                                    adaptive_height: True
+                                    theme_text_color: "Primary"
+
+                                MDSeparator:
+                                OneLineAvatarListItem:
+                                    text: "Single-line item with avatar"
+
+                                    ImageLeftWidget:
+                                        background_color: 1, 1, 1, 1
+                                        source: "Image/2.png"
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        MDCard:
+                            orientation: "vertical"
+                            ripple_behavior: True
+                            size: "100dp", "110dp"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+                            canvas:
+                                Color:
+                                    rgba: 0.169, 0.169, 0.169, 1
+                                RoundedRectangle:
+                                    radius: [15,]
+                                    size: self.size
+                                    pos: self.pos
+                            on_release:
+
+                                root.parent.current = 'second_home'
+
+                                root.manager.transition.direction = 'left'
+                            MDBoxLayout:
+                                id: box_top
+                                adaptive_height: True
+                                size_hint: 1, 1
+
+                                Image:
+                                    source: "image/2.png"
+
+                                    height: text_box.height
+
+                            MDBoxLayout:
+                                id: text_box
+                                orientation: "vertical"
+                                adaptive_height: True
+                                padding: 0, "10dp", "10dp", "10dp"
+
+                                MDLabel:
+
+                                    text: "Do The Body Good"
+                                    theme_text_color: "Primary"
+                                    bold: True
+                                    adaptive_height: True
+
+                                MDLabel:
+                                    text: "Beginner · 30 sec"
+                                    adaptive_height: True
+                                    theme_text_color: "Primary"
+
+                                MDSeparator:
+                                OneLineAvatarListItem:
+                                    text: "Single-line item with avatar"
+
+                                    ImageLeftWidget:
+                                        background_color: 1, 1, 1, 1
+                                        source: "Image/3.png"
+                    BoxLayout:
+                        orientation: 'vertical'
+
+                        MDCard:
+                            orientation: "vertical"
+                            ripple_behavior: True
+                            size: "100dp", "110dp"
+                            pos_hint: {"center_x": .5, "center_y": .5}
+                            canvas:
+                                Color:
+                                    rgba: 0.169, 0.169, 0.169, 1
+                                RoundedRectangle:
+                                    radius: [15,]
+                                    size: self.size
+                                    pos: self.pos
+                            on_release:
+
+                                root.parent.current = 'second_home'
+
+                                root.manager.transition.direction = 'left'
+                            MDBoxLayout:
+                                id: box_top
+                                adaptive_height: True
+                                size_hint: 1, 1
+
+                                Image:
+                                    source: "image/2.png"
+
+                                    height: text_box.height
+
+                            MDBoxLayout:
+                                id: text_box
+                                orientation: "vertical"
+                                adaptive_height: True
+                                padding: 0, "10dp", "10dp", "10dp"
+
+                                MDLabel:
+
+                                    text: "Do The Body Good"
+                                    theme_text_color: "Primary"
+                                    bold: True
+                                    adaptive_height: True
+
+                                MDLabel:
+                                    text: "Beginner · 30 sec"
+                                    adaptive_height: True
+                                    theme_text_color: "Primary"
+
+                                MDSeparator:
+                                OneLineAvatarListItem:
+                                    text: "Single-line item with avatar"
+
+                                    ImageLeftWidget:
+                                        background_color: 1, 1, 1, 1
+                                        source: "Image/2.png"
+            Label:
+                size_hint: 1, 0.6
+                markup: True
+                text: "[b]See it in action[/b]"
+                bold: True
+                font_size: 25
+                pos_hint: {"x":-0.2, "y":.45}
+
+            FloatLayout:
+
+                Video:
+                    id: but
+                    source:'Video/1.mov'
+                    text: 'Jumps'
+                    size_hint: 1, 1
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    state: 'stop'
+
+                Button:
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    background_color: 0, 0, 0, 0
+                    icon: 'play'
+                    on_press:
+                        root.ids.but.state = 'play'
+
+
+

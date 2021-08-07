@@ -1,0 +1,128 @@
+
+<FourthWindowHome>
+    name:'fourth_home'
+    btn: pause_but
+    id: fourth_window_home
+    id: videoo
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint: (1, 0.082)
+            MDIconButton:
+                name: 'Back'
+                text: 'Back'
+                icon: 'chevron-left'
+                pos:"10dp", "550dp"
+                on_release:
+                    root.ids.videoo.state = 'stop'
+                    root.udalit()
+                    root.parent.current = 'third_home'
+                    root.manager.transition.direction = 'right'
+
+    #                root.parent.remove_widget(root.parent.ids.third_window)
+        FloatLayout:
+            orientation: 'vertical'
+
+            Video:
+                id: videoo
+                source: 'Video/1.mov'
+            Image:
+                id: imagee
+                size_hint: (0.4, 0.4)
+                pos_hint: {"right":0.45,"top":1.1}
+
+
+            BoxLayout:
+                size_hint: (1, 0.3)
+                orientation: 'vertical'
+                BoxLayout:
+                    GridLayout:
+                        spacing: 25
+                        pos_hint: {"bottom":0.1}
+                        cols:2
+                        Label:
+                            id: tren
+                            size_hint_y: 0.2
+                            name: "jumps"
+
+                            font_size: '25sp'
+
+
+                        Label:
+                            id: reps_num
+                            name: "reps_number"
+                            size_hint_y: 0.2
+                            font_size: '25sp'
+                        Label:
+                            id: wremya
+                            name: "wremya"
+                            size_hint_y: 0.2
+                            text: "1:30"
+                            font_size: '42sp'
+
+
+                        Label:
+                            id: repss
+                            name: "number"
+                            size_hint_y: 0.2
+                            text: "2"
+                            font_size: '42sp'
+                        Label:
+                            name: "elips"
+                            size_hint_y: 0.2
+                            text: "elapsed"
+                            font_size: '12sp'
+
+
+                        Label:
+                            name: "reps"
+                            size_hint_y: 0.2
+                            text: "reps"
+                            font_size: '12sp'
+                BoxLayout:
+                    orientation:"horizontal"
+                    padding: 30
+                    spacing: 10
+                    MDIconButton:
+                        name: 'Music'
+                        text: 'Music'
+                        icon: 'music'
+                        size_hint: (0.4, 0.4)
+
+
+                    MDIconButton:
+                        name: 'Previous'
+                        text: 'Previous'
+                        icon: 'skip-previous'
+                        size_hint: (0.4, 0.4)
+                        on_release:
+                            root.back()
+                    MDIconButton:
+                        id: pause_but
+                        name: 'Pause'
+                        text: 'Pause'
+                        icon: 'play-pause'
+                        size_hint: (0.4, 0.4)
+                        on_press:
+
+                            print('root: ', root)
+                            root.plays()
+#                            root.ids.videoo.state = 'pause'
+#                            root.remove_widget(root.btn)
+                        on_release:
+                            print(self)
+
+                    MDIconButton:
+                        name: 'Next'
+                        text: 'Next'
+                        icon: 'skip-next'
+                        size_hint: (0.4, 0.4)
+                        on_release:
+                            root.forward()
+                    MDIconButton:
+                        name: 'Playlist'
+                        text: 'Playlist'
+                        icon: 'view-list'
+                        size_hint: (0.4, 0.4)
+

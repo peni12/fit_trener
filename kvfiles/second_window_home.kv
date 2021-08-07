@@ -1,0 +1,72 @@
+<SecondWindowHome>:
+    name: 'second_home'
+
+    BoxLayout:
+        color: (0, 0, 0, 1)
+        orientation: "vertical"
+        spacing: '3dp'
+        BoxLayout:
+            MDIconButton:
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                icon: "chevron-left"
+                on_release:
+                    root.parent.current = 'first_home'
+                    root.manager.transition.direction = 'right'
+            Label:
+                text: 'Cardio'
+
+            MDIconButton:
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                icon: "filter"
+
+
+
+
+
+
+        ThreeLineAvatarListItem:
+            text:"Let's Go"
+            secondary_text:"Advanced * 30 sec"
+            tretiatary_text:"Markus"
+
+
+
+            on_press:
+#                root.parent.remove_widget(root.parent.ids.third_window_home)
+#                root.parent.add_widget(root.parent.ids.third_window_home)
+                app.root.current = 'third_home'
+                root.manager.transition.direction = 'left'
+            ImageLeftWidget:
+                source: "image/2.png"
+
+
+        ThreeLineAvatarListItem:
+            text:"Let's Go"
+            secondary_text:"Advanced * 30 sec"
+            tretiatary_text:"Markus"
+            ImageLeftWidget:
+                source: "image/1.png"
+        ThreeLineAvatarListItem:
+            text:"Let's Go"
+            secondary_text:"Advanced * 30 sec"
+            tretiatary_text:"Markus"
+            ImageLeftWidget:
+                source: "image/2.png"
+        ThreeLineAvatarListItem:
+            text:"Let's Go"
+            secondary_text:"Advanced * 30 sec"
+            tretiatary_text:"Markus"
+            ImageLeftWidget:
+                source: "image/2.png"
+        ThreeLineAvatarListItem:
+            text:"Let's Go"
+            secondary_text:"Advanced * 30 sec"
+            tretiatary_text:"Markus"
+            ImageLeftWidget:
+                source: "image/2.png"
+        ThreeLineAvatarListItem:
+            text:"Let's Go"
+            secondary_text:"Advanced * 30 sec"
+            tretiatary_text:"Markus"
+            ImageLeftWidget:
+                source: "image/2.png"

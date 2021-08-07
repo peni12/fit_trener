@@ -1,0 +1,81 @@
+ScreenManager:
+    FirstMainWindow:
+        id: first_main_window
+    ThirdWindowHome:
+        id: third_window_home
+    FourthWindowHome:
+        id: fourth_window_home
+
+
+
+
+
+<HomeScreenManager>:
+    name: 'HomeScreen'
+
+    FirstWindowHome:
+        id:first_window_home
+    SecondWindowHome:
+        id:second_window_home
+
+
+<ActivityScreenManager>:
+    name: 'ActivityScreen'
+    id: screenman
+    FirstWindowActivity:
+        id:first_window_activity
+
+<ProfileScreenManager>:
+    FirstWindowProfile:
+        id: first_window_profile
+
+<FirstMainWindow>:
+    name: 'first_main_window'
+    MdBotNav:
+        MDBottomNavigationItem:
+            name: 'Home Button'
+            text: 'Home'
+            icon: 'home'
+            on_tab_press:
+                root.ids.home_screen_manager.current= 'first_home'
+            HomeScreenManager:
+                id:home_screen_manager
+
+
+
+        MDBottomNavigationItem:
+
+            name: 'Activity Button'
+            icon: 'run'
+            text: 'Activity'
+            on_tab_press:
+                root.ids.activity_screen_manager.ids.first_window_activity.build()
+            ActivityScreenManager:
+                id: activity_screen_manager
+
+
+
+        MDBottomNavigationItem:
+            name: 'Friends Button'
+            text: 'Friends'
+            icon: 'account-multiple-plus'
+
+            MDLabel:
+                text: 'Friends list'
+                halign: 'center'
+
+
+        MDBottomNavigationItem:
+            name: 'Profile Button'
+            text: 'Profile'
+            icon: 'account-circle'
+            ProfileScreenManager:
+                id: profile_screen_manager
+
+
+
+
+
+
+
+
