@@ -34,6 +34,7 @@ from sqlite_file import sqlite_add
 from datetime import datetime, timedelta
 from kivymd.uix.bottomnavigation import MDBottomNavigation
 from kivymd.uix.tab import MDTabsBase
+from kivymd.uix.expansionpanel import MDExpansionPanel, MDExpansionPanelThreeLine
 
 # data = json.load(open('my.json'))
 # print(data['response'])
@@ -45,10 +46,16 @@ Builder.load_file('kvfiles/first_window_home.kv')
 Builder.load_file('kvfiles/second_window_home.kv')
 Builder.load_file('kvfiles/third_window_home.kv')
 Builder.load_file('kvfiles/fourth_window_home.kv')
+Builder.load_file('kvfiles/fifth_window_home.kv')
+
 
 
 Builder.load_file('kvfiles/first_window_activity.kv')
 
+# class Ex(MDExpansionPanel):
+#     panel_cls = MDExpansionPanelThreeLine(text="Text")
+class Con(BoxLayout):
+    pass
 
 
 class MdBotNav(MDBottomNavigation):
@@ -75,7 +82,8 @@ class SecondWindowHome(Screen):
 
 class ThirdWindowHome(Screen):
     pass
-
+class FifthWindowHome(Screen):
+    pass
 
 
 class FourthWindowHome(Screen):
@@ -114,7 +122,58 @@ class FourthWindowHome(Screen):
         self.pose = mp_pose.Pose(min_detection_confidence=0.5, min_tracking_confidence=0.5)
 
         # zapuskayem ne pryrywnuyu funskiyu (self.load_video)
+
+        # while self.ids.cur.previous_slide != None:
+        #     print(self.ids.cur.previous_slide)
+        self.ids.cur.load_slide(self.ids.cur.slides[0])
+        # print(self.ids.cur.slides)
+        if self.ids.cur.index == 0:
+            self.ids.cur.current_slide.vid.state = 'play'
+        self.slide1 = self.ids.cur.current_slide.vid
+        Clock.schedule_interval(self.playy, 0)
         Clock.schedule_interval(self.load_video, 0)
+
+
+
+    def playy(self, *args):
+        self.slide2 = self.ids.cur.current_slide.vid
+        if self.slide1 != self.slide2:
+            print('slide1 != slide2')
+            self.start_threads = True
+            self.slide1 = self.slide2
+            self.t = 30
+            self.ct = Thread(target=self.countdown, name='name', args=(10, lambda: self.start_threads))
+            self.ct.start()
+            try:
+                self.ids.cur.previous_slide.vid.state = 'stop'
+            except:
+                pass
+
+            self.ids.cur.current_slide.vid.state = 'play'
+            try:
+
+                self.ids.cur.next_slide.vid.state = 'stop'
+            except:
+                pass
+    def on_touch_up(self, touch):
+        if self.ids.cur.current_slide.vid.state == 'play':
+            self.ids.cur.current_slide.vid.state = 'pause'
+            self.bez_mediapipe = True
+            self.start_threads = False
+            self.ts = self.t
+
+
+
+        else:
+            self.t = self.ts
+            self.start_threads = True
+            self.ct = Thread(target=self.countdown, name='name', args=(int(self.t), lambda: self.start_threads))
+            self.ct.start()
+            self.ids.cur.current_slide.vid.state = 'play'
+
+            self.bez_mediapipe = False
+
+
 
     def countdown(self, t, start):
 
@@ -184,57 +243,88 @@ class FourthWindowHome(Screen):
         # _, self.frame = self.capture.read()
         if self.udali:
             # wsyo uprajneniye
-            if self.prisi_bool:
+            if self.ids.cur.current_slide.vid == self.ids.vid_1:
+                print('good')
+                self.ids.tren_1.text = 'Prisidaniye\n \n '
+                self.ids.reps_num_1.text = '10\n \n '
+                counter = self.counter
+                print('delayem prisidaniye')
+                self.frame, self.counter, self.stage = osnownoy(self.capture, self.pose, pris_bool=True,
+                                                                counter=self.counter, stage=self.stage)
+                self.ids.repss_1.text = str(self.counter)
+                self.ids.wremya_1.text = self.timer
+                if counter != self.counter:
+                    # data['response']['prisidaniye'] = data['response']['prisidaniye'] + 1
+                    # with open('my.json', 'w') as file:
+                    #     json.dump(data, file, indent=4)
+                    data = datetime.now().strftime('%d-%m-%Y')
+                    sqlite_add(data, prisi_bool=True)
+                if self.t == 0:
+                    print('self.t == 0')
+                    self.ids.cur.load_slide(self.ids.cur.next_slide)
+                    self.ct = Thread(target=self.countdown, name='name', args=(30, lambda: self.start_threads))
+                    self.ct.start()
 
-                if self.a:
-                    self.ids.tren.text = 'Prisidaniye\n \n '
-                    self.ids.reps_num.text = '10\n \n '
-                    counter = self.counter
-                    print('delayem prisidaniye')
-                    self.frame, self.counter, self.stage = osnownoy(self.capture, self.pose, pris_bool=True,
-                                                                    counter=self.counter, stage=self.stage)
-                    self.ids.repss.text = str(self.counter)
-                    if counter != self.counter:
-                        # data['response']['prisidaniye'] = data['response']['prisidaniye'] + 1
-                        # with open('my.json', 'w') as file:
-                        #     json.dump(data, file, indent=4)
-                        data = datetime.now().strftime('%d-%m-%Y')
-                        sqlite_add(data, prisi_bool=True)
-                    if self.t == 0:
-                        self.a = False
-                        self.ct = Thread(target=self.countdown, name='name', args=(30, lambda: self.start_threads))
-                        self.ct.start()
-                elif self.b:
-                    self.ids.tren.text = 'Otdyhayem\n \n '
-                    self.ids.reps_num.text = '10\n \n '
-                    print('otdyhayem')
-                    _, self.frame = self.capture.read()
-                    self.counter = 0
-                    self.stage = None
-                    if self.t == 0:
-                        self.ct = Thread(target=self.countdown, name='name', args=(20, lambda: self.start_threads))
-                        self.ct.start()
-                        self.b = False
-                elif self.c:
-                    self.ids.tren.text = 'Prygayem\n \n '
-                    self.ids.reps_num.text = '10\n \n '
-                    print('prygayem')
-                    counter = self.counter
-                    self.frame, self.counter, self.stage = osnownoy(self.capture, self.pose, jump_bool=True,
-                                                                    counter=self.counter, stage=self.stage)
-                    self.ids.repss.text = str(self.counter)
-                    if counter != self.counter:
-                        # data['response']['jump'] = data['response']['jump'] + 1
-                        # with open('my.json', 'w') as file:
-                        #     json.dump(data, file, indent=4)
-                        data = datetime.now().strftime('%d-%m-%Y')
-                        sqlite_add(data, jump_bool=True)
-                    if self.t == 0:
-                        self.c = False
-                        self.ct = Thread(target=self.countdown, name='name', args=(30, lambda: self.start_threads))
-                        self.ct.start()
-                else:
-                    self.prisi_bool = False
+            elif self.ids.cur.current_slide.vid == self.ids.vid_2:
+
+                self.ids.tren_2.text = 'Otdyhayem\n \n '
+                self.ids.reps_num_2.text = '10\n \n '
+                self.ids.wremya_2.text = self.timer
+                self.ids.repss_2.text = '0'
+
+                print('otdyhayem')
+                _, self.frame = self.capture.read()
+                self.counter = 0
+                self.stage = None
+                if self.t == 0:
+                    self.ids.cur.load_slide(self.ids.cur.next_slide)
+                    self.ct = Thread(target=self.countdown, name='name', args=(20, lambda: self.start_threads))
+                    self.ct.start()
+
+            elif self.ids.cur.current_slide.vid == self.ids.vid_3:
+                self.ids.tren_3.text = 'Prygayem\n \n '
+                self.ids.reps_num_3.text = '10\n \n '
+                print('prygayem')
+                counter = self.counter
+                self.frame, self.counter, self.stage = osnownoy(self.capture, self.pose, jump_bool=True,
+                                                                counter=self.counter, stage=self.stage)
+                self.ids.repss_3.text = str(self.counter)
+                self.ids.wremya_3.text = self.timer
+                if counter != self.counter:
+                    # data['response']['jump'] = data['response']['jump'] + 1
+                    # with open('my.json', 'w') as file:
+                    #     json.dump(data, file, indent=4)
+                    data = datetime.now().strftime('%d-%m-%Y')
+                    sqlite_add(data, jump_bool=True)
+                if self.t == 0:
+                    self.ids.cur.load_slide(self.ids.cur.next_slide)
+                    self.ct = Thread(target=self.countdown, name='name', args=(30, lambda: self.start_threads))
+                    self.ct.start()
+
+            elif self.ids.cur.current_slide.vid == self.ids.vid_4:
+                self.ids.tren_4.text = 'Otdyhayem\n \n '
+                self.ids.reps_num_4.text = '10\n \n '
+                self.ids.wremya_4.text = self.timer
+                self.ids.repss_4.text = '0'
+                print('otdyhayem')
+                _, self.frame = self.capture.read()
+                self.counter = 0
+                self.stage = None
+                if self.t == 0:
+                    # self.ct = Thread(target=self.countdown, name='name', args=(20, lambda: self.start_threads))
+                    # self.ct.start()
+                    # if self.a:
+                    self.start_threads = False
+                    self.udali = False
+                    self.ids.cur.current_slide.vid.state = 'stop'
+                    Clock.unschedule(self.playy)
+                    Clock.unschedule(self.load_video)
+
+                    print('help')
+                    # print(self.parent.current)
+                    self.parent.current = 'fifth_home'
+                    # print(self.parent.current)
+
             elif self.jumpi_bool:
                 # tolko jump
                 self.frame, self.counter, self.stage = osnownoy(self.capture, self.pose, jump_bool=True, counter=self.counter,
@@ -243,7 +333,7 @@ class FourthWindowHome(Screen):
             texture = Texture.create(size=(self.frame.shape[1], self.frame.shape[0]), colorfmt='bgr')
             texture.blit_buffer(buffer, colorfmt='bgr', bufferfmt='ubyte')
 
-            self.ids.wremya.text = self.timer
+
             self.image.texture = texture
             # self.ids.repss.text = str(self.counter)
         elif self.bez_mediapipe:
@@ -412,15 +502,14 @@ class BoxLayoutExample(BoxLayout):
     pass
 
 class MainWidget(Widget):
-
     pass
-
 
 class TheLabApp(MDApp):
     def build(self):
 
         self.theme_cls.theme_style = 'Dark'
         self.theme_cls.primary_palette = "BlueGray"
+
 
 
 

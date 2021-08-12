@@ -1,0 +1,152 @@
+<FifthWindowHome>:
+    name:'fifth_home'
+    id: fifth_window_home
+    BoxLayout:
+        orientation: 'vertical'
+        BoxLayout:
+            size_hint: 1, 1
+            orientation: 'vertical'
+            ScrollView:
+                do_scroll_y: True
+                BoxLayout:
+                    size_hint: 1, 1
+                    orientation: 'vertical'
+                    BoxLayout:
+                        orientation: 'vertical'
+                        size_hint: 1, 0.5
+                        spacing: 10
+                        BoxLayout:
+                            orientation: 'vertical'
+                            Label:
+                                text: "Great Job"
+                                font_size: 20
+                                pos_hint: {"x":0, "y":-.2}
+                            Label
+                                text: "take a glance at your workout!"
+
+                                pos_hint: {"x":0, "y":-.3}
+                        BoxLayout:
+                            size_hint: 0.7, 1
+                            pos_hint: {'x': 0.15, 'y': 0}
+                            orientation: 'vertical'
+                            canvas:
+                                Color:
+                                    rgba: 0.7, 0, 0, 0.5
+                                RoundedRectangle:
+                                    radius: [15,]
+                                    size: self.size
+                                    pos: self.pos
+                            FloatLayout:
+                                Label:
+                                    text: "Total Time"
+                                    bold: True
+                                    font_size: 15
+                                    pos_hint: {"x":.20, "y":0.2}
+                                Label:
+                                    text: "Os"
+                                    bold: True
+                                    font_size: 25
+                                    pos_hint: {"x":.20, "y":-.3}
+                                Label:
+                                    text: "Reps"
+                                    bold: True
+                                    font_size: 15
+                                    pos_hint: {"x":-.20, "y":.2}
+                                Label:
+
+                                    text: "O"
+                                    bold: True
+                                    font_size: 25
+                                    pos_hint: {"x":-.20, "y":-.3}
+                    BoxLayout:
+                        orientation: 'vertical'
+                        BoxLayout:
+                            padding: 20, 0, 20, 0
+                            orientation: 'vertical'
+                            BoxLayout:
+                                Label:
+                                    font_size: 20
+                                    text: 'Prisedaniye'
+                                    bold: True
+                            BoxLayout:
+                                orientation: 'vertical'
+                                BoxLayout:
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'left'
+                                        text: 'Reps'
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'right'
+                                        text: '0'
+                                BoxLayout:
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'left'
+                                        text: 'Times'
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'right'
+                                        text: '0s'
+                        BoxLayout:
+                            padding: 20, 0, 20, 0
+                            orientation: 'vertical'
+                            BoxLayout:
+                                Label:
+                                    font_size: 20
+                                    text: 'Jump'
+                                    bold: True
+                            BoxLayout:
+                                orientation: 'vertical'
+                                BoxLayout:
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'left'
+                                        text: 'Reps'
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'right'
+                                        text: '0'
+                                BoxLayout:
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'left'
+                                        text: 'Times'
+                                    Label:
+                                        text_size: self.size
+                                        halign: 'right'
+                                        text: '0s'
+
+
+
+
+        BoxLayout:
+            size_hint: 1, 0.2
+            padding: 50, 30, 50, 30
+        #        ImageButton:
+            Button:
+                background_color: 0, 0, 0, 0
+                text: 'Done'
+                color: 0, 0, 0, 1
+                canvas.before:
+                    Color:
+                        rgba: 0.96, 0.68, 0.13, 1
+                    RoundedRectangle:
+                        radius: [15,]
+                        size: self.size
+                        pos: self.pos
+                font_size: 25
+                bold: True
+                pos_hint: {'x':0, 'y':0}
+                id: but
+        #            source:'image/start.png'
+
+                size_hint: 0.5, 0.7
+                mipmap: True
+        #            pos_hint: {'center_x': .5, 'center_y': .5}
+                on_press:
+                    app.root.current = 'fourth_home'
+    #                    app.root.ids.fourth_window_home.ids.videoo.state = 'play'
+                    app.root.ids.fourth_window_home.build()
+    #                    app.root.ids.fourth_window_home.ids.my_layout.build()
+                    app.root.ids.fourth_window_home.pris()

@@ -1,128 +1,304 @@
 
 <FourthWindowHome>
     name:'fourth_home'
-    btn: pause_but
+#    btn: pause_but
     id: fourth_window_home
     id: videoo
     BoxLayout:
         orientation: 'vertical'
-        BoxLayout:
+    #                root.parent.remove_widget(root.parent.ids.third_window)
+        FloatLayout:
             orientation: 'vertical'
-            size_hint: (1, 0.082)
+            BoxLayout:
+
+                FloatLayout:
+            #        orientation: 'vertical'
+                    size: root.width, root.height
+
+                    Carousel:
+#                        on_index: 0
+
+                        id: cur
+                        direction: 'bottom'
+                        FloatLayout:
+                            vid: vid_1
+                            Video:
+                                id: vid_1
+                                source: 'Video/video_1.mp4'
+#                                state: 'play'
+
+#                                root.ids.vid_1.allow_stretch:True
+                                options: {'eos': 'loop'}
+                            BoxLayout:
+                                size_hint: (1, 0.2)
+                                orientation: 'vertical'
+                                BoxLayout:
+                                    GridLayout:
+                                        pos_hint: {"bottom":0.1}
+                                        cols:2
+                                        Label:
+                                            id: tren_1
+                                            size_hint_y: 0.2
+                                            name: "jumps"
+
+                                            font_size: '25sp'
+
+
+                                        Label:
+                                            id: reps_num_1
+                                            name: "reps_number"
+                                            size_hint_y: 0.2
+                                            font_size: '25sp'
+                                        Label:
+                                            id: wremya_1
+                                            name: "wremya"
+                                            size_hint_y: 0.2
+                                            text: "1:30"
+                                            font_size: '42sp'
+
+
+                                        Label:
+                                            id: repss_1
+                                            name: "number"
+                                            size_hint_y: 0.2
+                                            text: "2"
+                                            font_size: '42sp'
+                                        Label:
+                                            name: "elips"
+                                            size_hint_y: 0.2
+                                            text: "elapsed"
+                                            font_size: '12sp'
+
+
+                                        Label:
+                                            name: "reps"
+                                            size_hint_y: 0.2
+                                            text: "reps"
+                                            font_size: '12sp'
+
+                        FloatLayout:
+                            vid: vid_2
+                            Video:
+                                id: vid_2
+                                source: 'Video/video_2.mp4'
+                #                state: 'stop'
+                                options: {'eos': 'loop'}
+                            BoxLayout:
+                                size_hint: (1, 0.2)
+                                orientation: 'vertical'
+                                BoxLayout:
+                                    GridLayout:
+                                        pos_hint: {"bottom":0.1}
+                                        cols:2
+                                        Label:
+                                            id: tren_2
+                                            size_hint_y: 0.2
+                                            name: "jumps"
+
+                                            font_size: '25sp'
+
+
+                                        Label:
+                                            id: reps_num_2
+                                            name: "reps_number"
+                                            size_hint_y: 0.2
+                                            font_size: '25sp'
+                                        Label:
+                                            id: wremya_2
+                                            name: "wremya"
+                                            size_hint_y: 0.2
+                                            text: "1:30"
+                                            font_size: '42sp'
+
+
+                                        Label:
+                                            id: repss_2
+                                            name: "number"
+                                            size_hint_y: 0.2
+                                            text: "2"
+                                            font_size: '42sp'
+                                        Label:
+                                            name: "elips"
+                                            size_hint_y: 0.2
+                                            text: "elapsed"
+                                            font_size: '12sp'
+
+
+                                        Label:
+                                            name: "reps"
+                                            size_hint_y: 0.2
+                                            text: "reps"
+                                            font_size: '12sp'
+                        FloatLayout:
+                            vid: vid_3
+                            Video:
+                                id: vid_3
+                                source: 'Video/video_3.mp4'
+                                options: {'eos': 'loop'}
+                #                state: 'stop'
+                            BoxLayout:
+                                size_hint: (1, 0.2)
+                                orientation: 'vertical'
+                                BoxLayout:
+                                    GridLayout:
+                                        pos_hint: {"bottom":0.1}
+                                        cols:2
+                                        Label:
+                                            id: tren_3
+                                            size_hint_y: 0.2
+                                            name: "jumps"
+
+                                            font_size: '25sp'
+
+
+                                        Label:
+                                            id: reps_num_3
+                                            name: "reps_number"
+                                            size_hint_y: 0.2
+                                            font_size: '25sp'
+                                        Label:
+                                            id: wremya_3
+                                            name: "wremya"
+                                            size_hint_y: 0.2
+                                            text: "1:30"
+                                            font_size: '42sp'
+
+
+                                        Label:
+                                            id: repss_3
+                                            name: "number"
+                                            size_hint_y: 0.2
+                                            text: "2"
+                                            font_size: '42sp'
+                                        Label:
+                                            name: "elips"
+                                            size_hint_y: 0.2
+                                            text: "elapsed"
+                                            font_size: '12sp'
+
+
+                                        Label:
+                                            name: "reps"
+                                            size_hint_y: 0.2
+                                            text: "reps"
+                                            font_size: '12sp'
+                        FloatLayout:
+                            vid: vid_4
+                            Video:
+                                id: vid_4
+                                source: 'Video/video_4.mp4'
+                                options: {'eos': 'loop'}
+
+#                                state: 'stop'
+                            BoxLayout:
+                                size_hint: (1, 0.2)
+                                orientation: 'vertical'
+                                BoxLayout:
+                                    GridLayout:
+                                        pos_hint: {"bottom":0.1}
+                                        cols:2
+                                        Label:
+                                            id: tren_4
+                                            size_hint_y: 0.2
+                                            name: "jumps"
+
+                                            font_size: '25sp'
+
+
+                                        Label:
+                                            id: reps_num_4
+                                            name: "reps_number"
+                                            size_hint_y: 0.2
+                                            font_size: '25sp'
+                                        Label:
+                                            id: wremya_4
+                                            name: "wremya"
+                                            size_hint_y: 0.2
+                                            text: "1:30"
+                                            font_size: '42sp'
+
+
+                                        Label:
+                                            id: repss_4
+                                            name: "number"
+                                            size_hint_y: 0.2
+                                            text: "2"
+                                            font_size: '42sp'
+                                        Label:
+                                            name: "elips"
+                                            size_hint_y: 0.2
+                                            text: "elapsed"
+                                            font_size: '12sp'
+
+
+                                        Label:
+                                            name: "reps"
+                                            size_hint_y: 0.2
+                                            text: "reps"
+                                            font_size: '12sp'
+
+            Image:
+                id: imagee
+                size_hint: (0.4, 0.4)
+                pos_hint: {"right":0.95,"top":1.1}
             MDIconButton:
                 name: 'Back'
                 text: 'Back'
                 icon: 'chevron-left'
-                pos:"10dp", "550dp"
+#                pos:"10dp", "550dp"
+                pos_hint: {'x': 0.05, 'y': .9}
                 on_release:
-                    root.ids.videoo.state = 'stop'
+#                    root.ids.videoo.state = 'stop'
+                    root.ids.cur.current_slide.vid.state = 'stop'
                     root.udalit()
                     root.parent.current = 'third_home'
                     root.manager.transition.direction = 'right'
 
-    #                root.parent.remove_widget(root.parent.ids.third_window)
-        FloatLayout:
-            orientation: 'vertical'
-
-            Video:
-                id: videoo
-                source: 'Video/1.mov'
-            Image:
-                id: imagee
-                size_hint: (0.4, 0.4)
-                pos_hint: {"right":0.45,"top":1.1}
 
 
-            BoxLayout:
-                size_hint: (1, 0.3)
-                orientation: 'vertical'
-                BoxLayout:
-                    GridLayout:
-                        spacing: 25
-                        pos_hint: {"bottom":0.1}
-                        cols:2
-                        Label:
-                            id: tren
-                            size_hint_y: 0.2
-                            name: "jumps"
-
-                            font_size: '25sp'
-
-
-                        Label:
-                            id: reps_num
-                            name: "reps_number"
-                            size_hint_y: 0.2
-                            font_size: '25sp'
-                        Label:
-                            id: wremya
-                            name: "wremya"
-                            size_hint_y: 0.2
-                            text: "1:30"
-                            font_size: '42sp'
-
-
-                        Label:
-                            id: repss
-                            name: "number"
-                            size_hint_y: 0.2
-                            text: "2"
-                            font_size: '42sp'
-                        Label:
-                            name: "elips"
-                            size_hint_y: 0.2
-                            text: "elapsed"
-                            font_size: '12sp'
-
-
-                        Label:
-                            name: "reps"
-                            size_hint_y: 0.2
-                            text: "reps"
-                            font_size: '12sp'
-                BoxLayout:
-                    orientation:"horizontal"
-                    padding: 30
-                    spacing: 10
-                    MDIconButton:
-                        name: 'Music'
-                        text: 'Music'
-                        icon: 'music'
-                        size_hint: (0.4, 0.4)
-
-
-                    MDIconButton:
-                        name: 'Previous'
-                        text: 'Previous'
-                        icon: 'skip-previous'
-                        size_hint: (0.4, 0.4)
-                        on_release:
-                            root.back()
-                    MDIconButton:
-                        id: pause_but
-                        name: 'Pause'
-                        text: 'Pause'
-                        icon: 'play-pause'
-                        size_hint: (0.4, 0.4)
-                        on_press:
-
-                            print('root: ', root)
-                            root.plays()
-#                            root.ids.videoo.state = 'pause'
-#                            root.remove_widget(root.btn)
-                        on_release:
-                            print(self)
-
-                    MDIconButton:
-                        name: 'Next'
-                        text: 'Next'
-                        icon: 'skip-next'
-                        size_hint: (0.4, 0.4)
-                        on_release:
-                            root.forward()
-                    MDIconButton:
-                        name: 'Playlist'
-                        text: 'Playlist'
-                        icon: 'view-list'
-                        size_hint: (0.4, 0.4)
+#                BoxLayout:
+#                    orientation:"horizontal"
+#                    padding: 30
+#                    spacing: 10
+#                    MDIconButton:
+#                        name: 'Music'
+#                        text: 'Music'
+#                        icon: 'music'
+#                        size_hint: (0.4, 0.4)
+#
+#
+#                    MDIconButton:
+#                        name: 'Previous'
+#                        text: 'Previous'
+#                        icon: 'skip-previous'
+#                        size_hint: (0.4, 0.4)
+#                        on_release:
+#                            root.back()
+#                    MDIconButton:
+#                        id: pause_but
+#                        name: 'Pause'
+#                        text: 'Pause'
+#                        icon: 'play-pause'
+#                        size_hint: (0.4, 0.4)
+#                        on_press:
+#
+#                            print('root: ', root)
+#                            root.plays()
+##                            root.ids.videoo.state = 'pause'
+##                            root.remove_widget(root.btn)
+#                        on_release:
+#                            print(self)
+#
+#                    MDIconButton:
+#                        name: 'Next'
+#                        text: 'Next'
+#                        icon: 'skip-next'
+#                        size_hint: (0.4, 0.4)
+#                        on_release:
+#                            root.forward()
+#                    MDIconButton:
+#                        name: 'Playlist'
+#                        text: 'Playlist'
+#                        icon: 'view-list'
+#                        size_hint: (0.4, 0.4)
 
