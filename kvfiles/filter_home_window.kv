@@ -1,0 +1,225 @@
+<FilterHome>:
+    name:'filter_home'
+    ScrollView:
+        do_scroll_x:False
+        do_scroll_y:True
+        bar_width: 0
+
+
+        BoxLayout:
+            size_hint: 1, 1.15
+
+#            height:self.minimum_height
+            orientation:'vertical'
+            BoxLayout:
+
+                BoxLayout:
+                    padding:20, 0, 20, 0
+                    MDIconButton:
+#                        size_hint: (0.15, 0.1)
+
+                        icon: "chevron-left"
+                        text:'Save'
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'center'
+                        on_release:
+                            root.parent.current = 'first_home'
+                            root.manager.transition.direction = 'right'
+
+                BoxLayout:
+                    padding:20, 0, 20, 0
+                    Label:
+#                        size_hint: (0.15, 0.1)
+
+                        text:'Settings'
+
+                        text_size: self.size
+                        halign: 'center'
+                        valign: 'center'
+                BoxLayout:
+                    padding:20, 0, 20, 0
+                    Label:
+#                        size_hint: (0.15, 0.1)
+
+                        text:'Save'
+
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'center'
+
+
+
+
+
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Category"
+                    text_size: self.size
+                    halign: 'left'
+            BoxLayout:
+                padding: 10, 0, 10, 0
+                size_hint:1,1.1
+                MDChooseChip:
+
+
+                    arrow_pos: 'bottom_mid'
+                    MDChip:
+                        text: 'Cardio'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+                    MDChip:
+                        text: 'Full Body'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+                    MDChip:
+                        text: 'Legs & Glutes'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+                    MDChip:
+                        text: 'Upper Body'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Label"
+                    text_size: self.size
+                    halign: 'left'
+            ScrollView:
+                do_scroll_x:True
+                BoxLayout:
+                    size_hint:1,1.1
+                    padding: 10
+                    MDChooseChip:
+
+
+                        arrow_pos: 'bottom_mid'
+                        MDChip:
+                            text: 'Beginner'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: 'Intermediate'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: 'Advanced'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Duration"
+                    text_size: self.size
+                    halign: 'left'
+            ScrollView:
+                do_scroll_x:True
+                BoxLayout:
+                    size_hint:1,1.1
+                    padding: 10, 0, 10, 0
+                    MDChooseChip:
+
+
+                        arrow_pos: 'bottom_mid'
+                        MDChip:
+                            text: '2-5 min'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: 'Full Body'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '5-10 min'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '10-15 min'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '15-20 min'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Status"
+                    text_size: self.size
+                    halign: 'left'
+            BoxLayout:
+                padding: 10, 0, 10, 0
+                size_hint:1,1.1
+                MDChooseChip:
+
+
+                    arrow_pos: 'bottom_mid'
+                    MDChip:
+                        text: 'New'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+                    MDChip:
+                        text: 'Completed'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Trainer"
+                    text_size: self.size
+                    halign: 'left'
+
+            ScrollView:
+                do_scroll_x:True
+                BoxLayout:
+                    size_hint:1,1.1
+                    padding: 10, 0, 10, 0
+                    MDChooseChip:
+
+
+                        arrow_pos: 'bottom_mid'
+                        MDChip:
+                            text: 'Sierra'
+                            icon:''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: 'Gabe'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: 'Markus'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: 'Stephanie'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '15-20 min'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+
+            BoxLayout:
+                size_hint:1, 1.1
+                Button:
+                    background_color: 0, 0, 0, 0
+                    text: 'Start'
+                    color: 0, 0, 0, 1
+                    canvas.before:
+                        Color:
+                            rgba: 0.96, 0.68, 0.13, 1
+                        RoundedRectangle:
+                            radius: [15,]
+                            size: self.size
+                            pos: self.pos
+                    font_size: 25
+                    bold: True
+                    pos_hint: {'x':0, 'y':0}
+                    id: but
+            #            source:'image/start.png'
+
+                    size_hint: 0.5, 0.7
+                    mipmap: True

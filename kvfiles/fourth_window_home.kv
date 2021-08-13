@@ -191,9 +191,10 @@
 
 #                                state: 'stop'
                             BoxLayout:
-                                size_hint: (1, 0.2)
+                                size_hint: (1, 0.35)
                                 orientation: 'vertical'
                                 BoxLayout:
+                                    orientation: 'vertical'
                                     GridLayout:
                                         pos_hint: {"bottom":0.1}
                                         cols:2
@@ -236,6 +237,7 @@
                                             size_hint_y: 0.2
                                             text: "reps"
                                             font_size: '12sp'
+
 
             Image:
                 id: imagee

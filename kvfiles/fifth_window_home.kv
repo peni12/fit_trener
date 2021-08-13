@@ -43,6 +43,7 @@
                                     font_size: 15
                                     pos_hint: {"x":.20, "y":0.2}
                                 Label:
+                                    id: total_time
                                     text: "Os"
                                     bold: True
                                     font_size: 25
@@ -53,7 +54,7 @@
                                     font_size: 15
                                     pos_hint: {"x":-.20, "y":.2}
                                 Label:
-
+                                    id: total_reps
                                     text: "O"
                                     bold: True
                                     font_size: 25
@@ -76,6 +77,7 @@
                                         halign: 'left'
                                         text: 'Reps'
                                     Label:
+                                        id: upr_1
                                         text_size: self.size
                                         halign: 'right'
                                         text: '0'
@@ -85,6 +87,7 @@
                                         halign: 'left'
                                         text: 'Times'
                                     Label:
+                                        id: time_1
                                         text_size: self.size
                                         halign: 'right'
                                         text: '0s'
@@ -104,6 +107,7 @@
                                         halign: 'left'
                                         text: 'Reps'
                                     Label:
+                                        id: upr_2
                                         text_size: self.size
                                         halign: 'right'
                                         text: '0'
@@ -113,6 +117,7 @@
                                         halign: 'left'
                                         text: 'Times'
                                     Label:
+                                        id: time_2
                                         text_size: self.size
                                         halign: 'right'
                                         text: '0s'
@@ -144,9 +149,9 @@
                 size_hint: 0.5, 0.7
                 mipmap: True
         #            pos_hint: {'center_x': .5, 'center_y': .5}
-                on_press:
-                    app.root.current = 'fourth_home'
-    #                    app.root.ids.fourth_window_home.ids.videoo.state = 'play'
-                    app.root.ids.fourth_window_home.build()
-    #                    app.root.ids.fourth_window_home.ids.my_layout.build()
-                    app.root.ids.fourth_window_home.pris()
+                on_release:
+                    root.parent.current = 'third_home'
+                    root.manager.transition.direction = 'left'
+
+
+

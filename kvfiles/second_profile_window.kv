@@ -1,0 +1,164 @@
+<SecondProfileWindow>:
+    name:'second_profile'
+    ScrollView:
+        do_scroll_x:False
+        do_scroll_y:True
+        bar_width: 0
+
+
+        BoxLayout:
+            size_hint: 1, 1.15
+
+#            height:self.minimum_height
+            orientation:'vertical'
+            BoxLayout:
+
+                BoxLayout:
+                    padding:20, 0, 20, 0
+                    MDIconButton:
+#                        size_hint: (0.15, 0.1)
+
+                        icon: "chevron-left"
+                        text:'Save'
+                        text_size: self.size
+                        halign: 'left'
+                        valign: 'center'
+                        on_release:
+                            root.parent.current = 'first_profile'
+                            root.manager.transition.direction = 'right'
+
+                BoxLayout:
+                    padding:20, 0, 20, 0
+                    Label:
+#                        size_hint: (0.15, 0.1)
+
+                        text:'Settings'
+
+                        text_size: self.size
+                        halign: 'center'
+                        valign: 'center'
+                BoxLayout:
+                    padding:20, 0, 20, 0
+                    Label:
+#                        size_hint: (0.15, 0.1)
+
+                        text:'Save'
+
+                        text_size: self.size
+                        halign: 'right'
+                        valign: 'center'
+
+
+
+            BoxLayout:
+                orientation: "vertical"
+                size_hint_y: None
+                height: self.minimum_height
+                padding: 30
+                spacing: 10
+
+                MDTextField:
+                    hint_text: "First Name"
+                    helper_text: "Please enter your name"
+                    required: True
+                    helper_text_mode: "on_error"
+
+                MDTextField:
+                    hint_text: "Last Name"
+                    helper_text: "Please enter your last name"
+                    required: True
+                    helper_text_mode: "on_error"
+
+                MDTextField:
+                    hint_text: "Username"
+                    helper_text: "Please enter your username"
+                    required: True
+                    helper_text_mode: "on_error"
+
+                MDTextField:
+                    hint_text: "Email"
+                    helper_text: "Please enter your Email"
+                    required: True
+                    helper_text_mode: "on_error"
+
+                MDTextField:
+                    hint_text: "Password"
+                    helper_text: "Please enter your password"
+                    required: True
+                    helper_text_mode: "on_error"
+
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Gender \n So you can compete with similar users"
+                    text_size: self.size
+                    halign: 'left'
+            BoxLayout:
+                padding: 10, 0, 10, 0
+                MDChooseChip:
+
+
+                    arrow_pos: 'bottom_mid'
+                    MDChip:
+                        text: 'Male'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+                    MDChip:
+                        text: 'Female'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+                    MDChip:
+                        text: 'Other'
+                        icon: ''
+                        selected_chip_color: .21176470535294, .098039627451, 1, 1
+            BoxLayout:
+                padding: 20
+                Label:
+                    text: "Age Group \n So you can compete with similar users"
+                    text_size: self.size
+                    halign: 'left'
+            ScrollView:
+                do_scroll_x:True
+                BoxLayout:
+                    size_hint: 2.1,1
+                    padding: 10
+                    MDChooseChip:
+
+
+                        arrow_pos: 'bottom_mid'
+                        MDChip:
+                            text: '< 21'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '21-25'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '26-30'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '31-35'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '36-40'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '41-45'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '46-50'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '51-55'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1
+                        MDChip:
+                            text: '>55'
+                            icon: ''
+                            selected_chip_color: .21176470535294, .098039627451, 1, 1

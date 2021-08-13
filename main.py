@@ -30,7 +30,7 @@ from kivy.uix.switch import Switch
 from kivy.uix.video import Video
 from threading import Thread, currentThread, Lock
 # import json
-from sqlite_file import sqlite_add
+from sqlite_file import sqlite_add, statistika_zanyatiy_plus, statistika_posle_zanyatiy, obnuleniye_statistiki_uprajneniy, wremya_plus, obnuleniye_wremeni, return_time
 from datetime import datetime, timedelta
 from kivymd.uix.bottomnavigation import MDBottomNavigation
 from kivymd.uix.tab import MDTabsBase
@@ -47,11 +47,10 @@ Builder.load_file('kvfiles/second_window_home.kv')
 Builder.load_file('kvfiles/third_window_home.kv')
 Builder.load_file('kvfiles/fourth_window_home.kv')
 Builder.load_file('kvfiles/fifth_window_home.kv')
-
-
+Builder.load_file('kvfiles/second_profile_window.kv')
 
 Builder.load_file('kvfiles/first_window_activity.kv')
-
+Builder.load_file('kvfiles/filter_home_window.kv')
 # class Ex(MDExpansionPanel):
 #     panel_cls = MDExpansionPanelThreeLine(text="Text")
 class Con(BoxLayout):
@@ -61,6 +60,7 @@ class Con(BoxLayout):
 class MdBotNav(MDBottomNavigation):
     pass
 
+
 class HomeScreenManager(ScreenManager):
     pass
 class ActivityScreenManager(ScreenManager):
@@ -68,6 +68,11 @@ class ActivityScreenManager(ScreenManager):
 class ProfileScreenManager(ScreenManager):
     pass
 
+class FilterHome(Screen):
+    pass
+
+class SecondProfileWindow(Screen):
+    pass
 
 class FirstMainWindow(Screen):
     pass
@@ -82,17 +87,21 @@ class SecondWindowHome(Screen):
 
 class ThirdWindowHome(Screen):
     pass
-class FifthWindowHome(Screen):
-    pass
+
 
 
 class FourthWindowHome(Screen):
     def build(self):
+        obnuleniye_statistiki_uprajneniy()
+        obnuleniye_wremeni()
+        self.slide_1_bool = False
+        self.slide_3_bool = False
 
         # eti peremenny nujny ctoby delat perehody mejdu uprajneniyami
-        self.a = True
-        self.b = True
-        self.c = True
+        # self.a = True
+        # self.b = True
+        # self.c = True
+        self.total_time = 0
 
         print('sola')
         # ctoby zakrywat potok
@@ -192,6 +201,13 @@ class FourthWindowHome(Screen):
                 if start():
                     time.sleep(1)
                     self.t -= 1
+                    wremya_plus()
+                    if self.slide_1_bool:
+                        # wremya_plus()
+                        wremya_plus(time_1=True)
+                    elif self.slide_3_bool:
+                        # wremya_plus()
+                        wremya_plus(time_2=True)
                 else:
                     break
 
@@ -244,6 +260,7 @@ class FourthWindowHome(Screen):
         if self.udali:
             # wsyo uprajneniye
             if self.ids.cur.current_slide.vid == self.ids.vid_1:
+                self.slide_1_bool = True
                 print('good')
                 self.ids.tren_1.text = 'Prisidaniye\n \n '
                 self.ids.reps_num_1.text = '10\n \n '
@@ -259,6 +276,7 @@ class FourthWindowHome(Screen):
                     #     json.dump(data, file, indent=4)
                     data = datetime.now().strftime('%d-%m-%Y')
                     sqlite_add(data, prisi_bool=True)
+                    statistika_zanyatiy_plus(urj_1=True)
                 if self.t == 0:
                     print('self.t == 0')
                     self.ids.cur.load_slide(self.ids.cur.next_slide)
@@ -266,6 +284,8 @@ class FourthWindowHome(Screen):
                     self.ct.start()
 
             elif self.ids.cur.current_slide.vid == self.ids.vid_2:
+                self.slide_1_bool = False
+                self.slide_3_bool = False
 
                 self.ids.tren_2.text = 'Otdyhayem\n \n '
                 self.ids.reps_num_2.text = '10\n \n '
@@ -282,6 +302,7 @@ class FourthWindowHome(Screen):
                     self.ct.start()
 
             elif self.ids.cur.current_slide.vid == self.ids.vid_3:
+                self.slide_3_bool = True
                 self.ids.tren_3.text = 'Prygayem\n \n '
                 self.ids.reps_num_3.text = '10\n \n '
                 print('prygayem')
@@ -296,12 +317,15 @@ class FourthWindowHome(Screen):
                     #     json.dump(data, file, indent=4)
                     data = datetime.now().strftime('%d-%m-%Y')
                     sqlite_add(data, jump_bool=True)
+                    statistika_zanyatiy_plus(urj_2=True)
                 if self.t == 0:
                     self.ids.cur.load_slide(self.ids.cur.next_slide)
                     self.ct = Thread(target=self.countdown, name='name', args=(30, lambda: self.start_threads))
                     self.ct.start()
 
             elif self.ids.cur.current_slide.vid == self.ids.vid_4:
+                self.slide_1_bool = False
+                self.slide_3_bool = False
                 self.ids.tren_4.text = 'Otdyhayem\n \n '
                 self.ids.reps_num_4.text = '10\n \n '
                 self.ids.wremya_4.text = self.timer
@@ -314,6 +338,7 @@ class FourthWindowHome(Screen):
                     # self.ct = Thread(target=self.countdown, name='name', args=(20, lambda: self.start_threads))
                     # self.ct.start()
                     # if self.a:
+                    self.parent.ids.fifth_window_home.build()
                     self.start_threads = False
                     self.udali = False
                     self.ids.cur.current_slide.vid.state = 'stop'
@@ -323,6 +348,7 @@ class FourthWindowHome(Screen):
                     print('help')
                     # print(self.parent.current)
                     self.parent.current = 'fifth_home'
+
                     # print(self.parent.current)
 
             elif self.jumpi_bool:
@@ -461,6 +487,14 @@ class FourthWindowHome(Screen):
             self.ids.videoo.state = 'play'
             self.play()
 
+class FifthWindowHome(Screen):
+    def build(self):
+        self.ids.upr_1.text = statistika_posle_zanyatiy(urj_1=True)[1]
+        self.ids.upr_2.text = statistika_posle_zanyatiy(urj_2=True)[1]
+        self.ids.total_reps.text = statistika_posle_zanyatiy()[0]
+        self.ids.total_time.text = return_time() + 's'
+        self.ids.time_1.text = return_time(time_1=True)[1]
+        self.ids.time_2.text = return_time(time_2=True)[1]
 
 
 class FirstWindowActivity(Screen):
