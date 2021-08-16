@@ -51,6 +51,8 @@ Builder.load_file('kvfiles/second_profile_window.kv')
 
 Builder.load_file('kvfiles/first_window_activity.kv')
 Builder.load_file('kvfiles/filter_home_window.kv')
+
+
 # class Ex(MDExpansionPanel):
 #     panel_cls = MDExpansionPanelThreeLine(text="Text")
 class Con(BoxLayout):
@@ -540,7 +542,7 @@ class MainWidget(Widget):
 
 class TheLabApp(MDApp):
     def build(self):
-
+        # Builder.load_file('TheLab.kv')
         self.theme_cls.theme_style = 'Dark'
         self.theme_cls.primary_palette = "BlueGray"
 
@@ -549,4 +551,4 @@ class TheLabApp(MDApp):
 
 
 
-TheLabApp().run()
+TheLabApp(kv_file='TheLab.kv').run()
